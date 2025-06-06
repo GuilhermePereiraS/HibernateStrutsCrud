@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+    "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="usuarioForm" type="cba.ifmt.forms.UsuarioForm"/> 
+    </form-beans>
+
+    <action-mappings>
+        <action path="/adiciona" 
+                type="cba.ifmt.actions.AdicionaAction"
+                name="usuarioForm"
+                scope="request"
+                input="/adicionaForm.jsp">
+            <forward name="paginaConsulta" path="/consulta.do" redirect="true"/>
+            <forward name="tudoErrado" path="/tudoErrado.jsp"/>
+        </action>
+        
+        <action path="/edita" 
+                type="cba.ifmt.actions.EditaAction"
+                scope="request"
+                input="/editaForm.jsp">
+            <forward name="tudoCerto" path="/tudoCerto.jsp"/>
+            <forward name="tudoErrado" path="/tudoErrado.jsp"/>
+        </action>
+        
+        <action path="/consulta" 
+                type="cba.ifmt.actions.ConsultaAction"
+                scope="request"
+                input="/index.jsp">
+            <forward name="paginaTabelas" path="/tabelaConsultas.jsp"/>
+        </action>
+        
+        <action path="/deleta" 
+                type="cba.ifmt.actions.DeletaAction"
+                scope="request"
+                input="/deletaForm.jsp">
+            <forward name="paginaConsulta" path="/consulta.do" redirect="true"/>
+            <forward name="tudoErrado" path="/tudoErrado.jsp"/>
+        </action>
+        
+    </action-mappings>
+</struts-config>
