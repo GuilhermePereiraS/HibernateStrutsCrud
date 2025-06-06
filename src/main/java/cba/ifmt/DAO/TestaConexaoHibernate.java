@@ -1,6 +1,7 @@
 package cba.ifmt.DAO;
 
 import cba.ifmt.forms.MunicipioBean;
+import cba.ifmt.forms.UsuarioForm;
 import cba.ifmt.util.HibernateUtil;
 import net.sf.hibernate.Session;
 public class TestaConexaoHibernate {
@@ -13,15 +14,23 @@ public class TestaConexaoHibernate {
             Session session = HibernateUtil.getSessionFactory().openSession();
             System.out.println("conexao com db deu certo");
             
-            MunicipioDao uDao = new MunicipioDao();
+            UsuarioDao uDao = new UsuarioDao();
+            UsuarioForm user = new UsuarioForm();
+            MunicipioDao mDao = new MunicipioDao();
+            MunicipioBean muni = new MunicipioBean();
+            
+            user.setCpf("324234");
+            user.setEmail("fwefwf");
+            user.setNome("guizinho123");
             
             
-            	System.out.println(uDao.selecionaMunicipio("cuiaba").getId());
-
+           
+            uDao.adicionarUsuario(user);
+            	
             session.close();
             HibernateUtil.getSessionFactory().close();
         } catch (Exception e) {
-            System.out.println("conexao com db deu errado" + e.getMessage());
+            System.out.println("conexao com db deu errado " + e.getMessage());
             e.printStackTrace();
         }
     }

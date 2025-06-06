@@ -11,19 +11,16 @@ import org.apache.struts.action.ActionMapping;
 import cba.ifmt.DAO.MunicipioDao;
 import cba.ifmt.DAO.UsuarioDao;
 
-public class ConsultaAction extends Action {
-	
-	@Override
+public class CarregaUsuarioDeletaAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		String nome = (String) request.getAttribute("nomeUsuario");
 		UsuarioDao uDao = new UsuarioDao();
-		MunicipioDao mDao = new MunicipioDao();
-		if (uDao.listarTodos() == null) {
-			System.out.println("a lista esta vazia");
-		}
+		MunicipioDao mDao = new MunicipioDao();		
 		
-		request.setAttribute("listaUsuarios", uDao.listarTodos());
+		request.setAttribute("usuario", uDao.selecionaUsuarioForm(nome));
 		request.setAttribute("listaMunicipios", mDao.listarTodos());
-		return mapping.findForward("paginaTabelas");
+		
+		return mapping.findForward("deletaFormResultado");
 	}
 }

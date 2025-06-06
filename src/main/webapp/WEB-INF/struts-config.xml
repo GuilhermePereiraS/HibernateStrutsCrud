@@ -6,9 +6,18 @@
 <struts-config>
     <form-beans>
         <form-bean name="usuarioForm" type="cba.ifmt.forms.UsuarioForm"/> 
+        <form-bean name="procuraUsuarioForm" type="cba.ifmt.forms.ProcuraUsuarioForm"/> 
     </form-beans>
 
     <action-mappings>
+            <action path="/carregaMunicipios" 
+                type="cba.ifmt.actions.CarregaMunicipiosAction"
+                scope="request"
+                input="/tudoErrado.jsp">
+            <forward name="adicionaForm" path="/adicionaForm.jsp"/>
+            <forward name="tudoErrado" path="/tudoErrado.jsp"/>
+        </action>
+    
         <action path="/adiciona" 
                 type="cba.ifmt.actions.AdicionaAction"
                 name="usuarioForm"
@@ -22,7 +31,17 @@
                 type="cba.ifmt.actions.EditaAction"
                 scope="request"
                 input="/editaForm.jsp">
-            <forward name="tudoCerto" path="/tudoCerto.jsp"/>
+            <forward name="tudoCerto" path="/tudoCerto.jsp" redirect="true" />
+            <forward name="tudoErrado" path="/tudoErrado.jsp"/>
+        </action>
+        
+        <action path="/procura" 
+                type="cba.ifmt.actions.ProcuraUsuarioAction"
+                name="procuraUsuarioForm"
+                scope="request"
+                input="/index.jsp">
+            <forward name="editaForm" path="/editaForm.jsp" />
+            <forward name="deletaFormResultado" path="/deletaFormResultado.jsp" />
             <forward name="tudoErrado" path="/tudoErrado.jsp"/>
         </action>
         
@@ -35,6 +54,15 @@
         
         <action path="/deleta" 
                 type="cba.ifmt.actions.DeletaAction"
+                scope="request"
+                input="/deletaForm.jsp">
+            <forward name="paginaConsulta" path="/consulta.do" redirect="true"/>
+            <forward name="tudoErrado" path="/tudoErrado.jsp"/>
+        </action>
+        
+         <action path="/atualiza" 
+                type="cba.ifmt.actions.DeletaAction"
+                 name="usuarioForm"
                 scope="request"
                 input="/deletaForm.jsp">
             <forward name="paginaConsulta" path="/consulta.do" redirect="true"/>

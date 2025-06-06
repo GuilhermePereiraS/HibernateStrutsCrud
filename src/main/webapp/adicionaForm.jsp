@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +14,7 @@
 
 <style>
 label,input {
-	margin: 5px;
+	margin: 5px;	
 }
 </style>
 </head>
@@ -26,12 +29,10 @@ label,input {
 	  <label for="cpf">Cpf:</label>
 	  <html:text property="cpf" /><br>
 	
-	  <label for="municipio">Municipio:</label>
-	  <select name="municipio">
-	  	<c:forEach var="municipios" items="${municipios}">
-	  		<option value="${municipios.nome}">${municipios.nome}</option>
-	  	</c:forEach>
-	  </select><br>
+	  <label for="municipio_id">Municipio:</label>
+	  <html:select property="municipio_id">
+		<html:options collection="listaMunicipios" property="id" labelProperty="nome"/>
+	  </html:select><br>
 	
 	  <html:submit value="Adicionar"/>
 	</html:form>

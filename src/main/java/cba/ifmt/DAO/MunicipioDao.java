@@ -5,69 +5,95 @@ import java.util.List;
 import cba.ifmt.forms.MunicipioBean;
 import cba.ifmt.util.HibernateUtil;
 import net.sf.hibernate.HibernateException;
-import net.sf.hibernate.Query;
 import net.sf.hibernate.Session;
+import net.sf.hibernate.Transaction;
 
 public class MunicipioDao {
 	
 	
 	//pronto
-	public void adicionaMunicipio(MunicipioBean municipio) {
+	public void adicionaMunicipio(MunicipioBean municipio) throws HibernateException {
+			Session session = null;
+			Transaction transaction = null;
 		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			session.beginTransaction();
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
 			
 			session.save(municipio);
 			
-			session.beginTransaction().commit();
+			transaction.commit();
 		} catch (HibernateException e) {
-			
 			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			if (session != null) {
+				if (session.isOpen()) {
+					session.close();
+				}
+			}
 		}
 	}
 	
-	public void atualizarMunicipio(MunicipioBean municipio) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			session.beginTransaction();
-			
-			session.beginTransaction().commit();
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		}
-	}	
-	
 	//pronto
-	public List<MunicipioBean> consultarMunicipios() throws HibernateException {
+	public List<MunicipioBean> listarTodos() throws HibernateException {
 		Session session = null;
+		List<MunicipioBean> lista = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
+			lista = (List<MunicipioBean>) session.createQuery("from MunicipioBean").list();
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				if (session.isOpen()) {
+					session.close();
+				}
+			}
 		}
-		return (List<MunicipioBean>) session.createQuery("from MunicipioBean").list();
+		return lista;
 	}
 	
 	//pronto
-	public MunicipioBean selecionaMunicipio(String nome) throws HibernateException {
+	public MunicipioBean selecionaMunicipio(int id) throws HibernateException {
 		
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		
-		
-		  return (MunicipioBean) session.createQuery("from MunicipioBean where nome = '" + nome + "'").uniqueResult();
+		Session session=null;
+		MunicipioBean municipio = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			municipio = (MunicipioBean) session.createQuery("from MunicipioBean where id = '" + id + "'").uniqueResult();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (session !=null) {
+				if(session.isOpen()) {
+					session.close();
+				}
+			}
+		}
+		  return municipio;
 		
 	}
 	
-	
-	public void deletaMunicipio(MunicipioBean municipio) {
+	//pronto
+	public void deletaMunicipio(MunicipioBean municipio) throws HibernateException {
+		Transaction transaction = null;
+		Session session = null;
 		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			session.beginTransaction();
-			session.delete(selecionaMunicipio(municipio.getNome()));
-			session.beginTransaction().commit();
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			session.delete(selecionaMunicipio(municipio.getId()));
+			transaction.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			if (session != null) {
+				if (session.isOpen()) {
+					session.close();
+				}
+			}
 		}
 	}
 }

@@ -17,9 +17,9 @@
 <body>
 	<div class="container">
 		<ul>
-			<li><a href="adicionaForm.jsp">Adicionar usuário</a></li>
+			<li><a href="carregaMunicipios.do">Adicionar usuário</a></li>
 			<li><a href="editaForm.jsp">Editar usuário</a></li>
-			<li><a href="consulta">Consultar usuário</a></li>
+			<li><a href="consulta.do">Consultar usuário</a></li>
 			<li><a href="deletaForm.jsp">Deletar usuário</a></li>
 		</ul>
 	</div>
