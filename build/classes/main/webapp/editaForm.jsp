@@ -5,6 +5,8 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ page isELIgnored="false" %>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -30,35 +32,20 @@
   <html:submit value="Procurar" />
 </html:form>
 	
-	
-			  
-		 	<c:forEach items="${listaUsuarios}" var="usuario">
-		 		<c:forEach items="${listaMunicipios}" var="municipio">
-		 		<c:if test="${municipio.id == usuario.municipio_id}">
-				  <tr>
-				    <td><c:out value="${usuario.id}" /></td>
-				    <td><c:out value="${usuario.nome}" /></td>
-				    <td><c:out value="${usuario.email}" /></td>
-				    <td><c:out value="${usuario.cpf}" /></td>
-				    <td><c:out value="${municipio.nome}" /></td>
-				  </tr> 		
-		 		</c:if>
-			</c:forEach>
-	
+		
 	  <div>
 	  <html:form action="atualiza">
 		    <html:text property="nome"  /><br>
 		    <html:text property="email" /><br>
 		    <html:text property="cpf" /><br>
 		    
-		    <c:forEach items="${listaMunicipios}" var="municipio">
-		    	<c:if test="${municipio.id == usuarioForm.municipio_id}">
-		    		
-		    	</c:if>
-		    </c:forEach>
+
+		    <input type="text" name="municipioNome" value="${nomeMunicipioResultado}"/>
+
 		    
-		    <html:text property="municipio_id"  /><br>
-		    <html:hidden property="id" /><br>
+		    <html:hidden property="municipio_id"  /><br>
+		    <label>Id do usuário:</label><br>
+		    <html:text property="id" readonly="true"/><br>
 		   	<input type="submit" value="Concluir">
 	  </html:form>
 	  </div>
