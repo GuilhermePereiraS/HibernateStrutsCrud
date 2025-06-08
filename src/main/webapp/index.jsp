@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>CRUD SERVLET/JSP</title>
+    <title>CRUD HIBERNATE/STRUTS</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
     	ul {
