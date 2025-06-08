@@ -11,15 +11,13 @@ public class UsuarioForm extends ActionForm {
 	private String nome;
 	private String email;
 	private String cpf;
-	private int municipio_id;
+	private MunicipioBean municipio;
 	
-
-	
-	public int getMunicipio_id() {
-		return municipio_id;
+	public MunicipioBean getMunicipio() {
+		return municipio;
 	}
-	public void setMunicipio_id(int municipio_id) {
-		this.municipio_id = municipio_id;
+	public void setMunicipio(MunicipioBean municipio) {
+		this.municipio = municipio;
 	}
 	public int getId() {
 		return id;

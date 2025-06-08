@@ -20,6 +20,12 @@ tr,td,th {
 	border: 1px, solid;
 	padding: 5px;
 }
+
+a {
+	padding: 20px;
+	font-size: 25px;
+}
+
 </style>
 </head>
 	<body>
@@ -41,7 +47,7 @@ tr,td,th {
 		  </c:if>
 		 	<c:forEach items="${listaUsuarios}" var="usuario">
 		 		<c:forEach items="${listaMunicipios}" var="municipio">
-		 		<c:if test="${municipio.id == usuario.municipio_id}">
+		 		<c:if test="${municipio.id == usuario.municipio.id}">
 				  <tr>
 				    <td><c:out value="${usuario.id}" /></td>
 				    <td><c:out value="${usuario.nome}" /></td>
@@ -54,5 +60,7 @@ tr,td,th {
 		</c:forEach>
 		  
 		</table>
+		<br>
+		<a href="index.jsp">Voltar</a>
 	</body>
 </html>

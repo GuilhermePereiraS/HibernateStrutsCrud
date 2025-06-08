@@ -4,7 +4,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 <html>
@@ -29,10 +29,12 @@ label,input {
 	  <label for="cpf">Cpf:</label>
 	  <html:text property="cpf" /><br>
 	
-	  <label for="municipio_id">Municipio:</label>
-	  <html:select property="municipio_id">
-		<html:options collection="listaMunicipios" property="id" labelProperty="nome"/>
-	  </html:select><br>
+	  <label for="municipio">Municipio:</label>
+	  <select name="nomeMunicipio">
+		<c:forEach items="${listaMunicipios}" var="municipio">
+			<option>${municipio.nome}</option>
+		</c:forEach>	  
+	  </select>
 	
 	  <html:submit value="Adicionar"/>
 	</html:form>

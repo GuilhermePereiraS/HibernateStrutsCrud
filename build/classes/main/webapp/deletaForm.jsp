@@ -13,10 +13,12 @@
 <title>Insert title here</title>
 </head>
 	<body>
-		 <html:form action="/procura">
-			 <label for="nome">Procure um usuário para deletar</label>
-			 <html:text property="nome"/>
-			 <html:submit value="Procurar" />
+		 <html:form action="/deleta">
+			 <label>Selecione um usuario para deletar</label>
+			 <html:select property="nome">
+			 	<html:options collection="listaUsuarios" property="nome" labelProperty="nome"></html:options>
+			 </html:select>
+			 <html:submit value="Deletar" />
 		 </html:form>
 	</body>
 </html>
