@@ -11,7 +11,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Delete um usuario</title>
 </head>
 	<body>
 		 <html:form action="/deleta">
