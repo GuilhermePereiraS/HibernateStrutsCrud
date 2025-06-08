@@ -23,18 +23,13 @@ public class ProcuraUsuarioAction extends Action {
 		ProcuraUsuarioForm usuario = (ProcuraUsuarioForm) form;
 		UsuarioDao uDao = new UsuarioDao();
 		
-		
 		UsuarioForm usuarioResultado = uDao.selecionaUsuarioForm(usuario.getNome());
 		
 		MunicipioDao Mdao = new MunicipioDao();
 
-		for (MunicipioBean m : Mdao.listarTodos()) {
-			if (usuarioResultado.getMunicipio_id() == m.getId()) {
-				String nomeMunicipioResultado = m.getNome();
-				request.setAttribute("nomeMunicipioResultado", nomeMunicipioResultado);
+		
+		request.setAttribute("nomeMunicipioResultado", usuarioResultado.getMunicipio().getNome());
 				
-			}
-		}
 		
 		request.setAttribute("usuarioForm", usuarioResultado);
 		request.setAttribute("listaMunicipios", Mdao.listarTodos());
@@ -42,9 +37,6 @@ public class ProcuraUsuarioAction extends Action {
 		
 		if (usuario.getOrigem().equals("edita")) {
 			return mapping.findForward("editaForm");
-	
-		} else if (usuario.getOrigem().equals("deleta")) {
-			return mapping.findForward("deletaFormResultado");
 		} else {
 			return mapping.findForward("tudoErrado");
 		}

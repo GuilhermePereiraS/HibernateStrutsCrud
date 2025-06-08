@@ -54,17 +54,26 @@
         
         <action path="/deleta" 
                 type="cba.ifmt.actions.DeletaAction"
+                name="procuraUsuarioForm"
                 scope="request"
                 input="/deletaForm.jsp">
             <forward name="paginaConsulta" path="/consulta.do" redirect="true"/>
             <forward name="tudoErrado" path="/tudoErrado.jsp"/>
         </action>
         
+                <action path="/carregaUsuarios" 
+                type="cba.ifmt.actions.CarregaUsuariosAction"
+                scope="request"
+                input="/index.jsp">
+            <forward name="deletaForm" path="/deletaForm.jsp"/>
+            <forward name="tudoErrado" path="/tudoErrado.jsp"/>
+        </action>
+        
          <action path="/atualiza" 
-                type="cba.ifmt.actions.DeletaAction"
+                type="cba.ifmt.actions.AtualizaAction"
                  name="usuarioForm"
                 scope="request"
-                input="/deletaForm.jsp">
+                input="/index.jsp">
             <forward name="paginaConsulta" path="/consulta.do" redirect="true"/>
             <forward name="tudoErrado" path="/tudoErrado.jsp"/>
         </action>

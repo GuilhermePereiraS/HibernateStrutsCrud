@@ -11,6 +11,6 @@
         <property name="nome" column="nome"/>
         <property name="email" column="email"/>
         <property name="cpf" column="cpf"/>
-        <property name="municipio_id" column="municpio_id"/>
+        <many-to-one name="municipio" class="cba.ifmt.forms.MunicipioBean" column="municipio_id" not-null="true"></many-to-one>
     </class>
 </hibernate-mapping>

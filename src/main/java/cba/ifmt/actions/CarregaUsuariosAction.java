@@ -8,10 +8,16 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public class EditaAction extends Action {
-	@Override
+import cba.ifmt.DAO.MunicipioDao;
+import cba.ifmt.DAO.UsuarioDao;
+
+public class CarregaUsuariosAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		return null;
+		UsuarioDao uDao = new UsuarioDao();	
+		
+		request.setAttribute("listaUsuarios", uDao.listarTodos());
+		
+		return mapping.findForward("deletaForm");
 	}
 }

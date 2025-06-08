@@ -13,12 +13,10 @@ import cba.ifmt.DAO.UsuarioDao;
 import cba.ifmt.forms.MunicipioBean;
 import cba.ifmt.forms.UsuarioForm;
 
-public class AdicionaAction extends Action {
-	
+public class AtualizaAction extends Action {
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {		
-		
+			HttpServletResponse response) throws Exception {
 		MunicipioDao mDao = new MunicipioDao();
 		UsuarioForm usuarioFormulario = (UsuarioForm) form;
 		UsuarioForm usuarioNovo = usuarioFormulario;
@@ -34,7 +32,8 @@ public class AdicionaAction extends Action {
 		usuarioNovo.setMunicipio(municipioEscolhido);
 		
 		UsuarioDao uDao = new UsuarioDao();
-		uDao.adicionarUsuario(usuarioNovo);
+		uDao.editarUsuarioForm(usuarioNovo);;
+		
 		return mapping.findForward("paginaConsulta");
 	}
 }

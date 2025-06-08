@@ -38,14 +38,14 @@
 		    <html:text property="nome"  /><br>
 		    <html:text property="email" /><br>
 		    <html:text property="cpf" /><br>
-		    
-
-		    <input type="text" name="municipioNome" value="${nomeMunicipioResultado}"/>
-
-		    
-		    <html:hidden property="municipio_id"  /><br>
-		    <label>Id do usuário:</label><br>
-		    <html:text property="id" readonly="true"/><br>
+	  <select name="nomeMunicipio">		    
+	  
+		<c:forEach items="${listaMunicipios}" var="municipio">
+			<option <c:if test="${municipio.nome == nomeMunicipioResultado }">selected="selected"</c:if> >${municipio.nome}</option>
+		</c:forEach>	  
+		
+	  </select>
+		    <html:hidden property="id" /><br>
 		   	<input type="submit" value="Concluir">
 	  </html:form>
 	  </div>
