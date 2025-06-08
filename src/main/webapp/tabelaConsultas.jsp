@@ -9,21 +9,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="style.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Tabela de usuarios</title>
 <style>
 
 table {
 	border-collapse: collapse;
+	background-color: #7da195;
+	border: solid 2px #b8dbd0;
 }
+
+table::selection {
+	background-color: #769188
+}
+
 tr,td,th {
-	border: 1px, solid;
+	border: 2px, solid;
 	padding: 5px;
+	border-radius: 5px;
 }
 
 a {
-	padding: 20px;
-	font-size: 25px;
+	padding: 2px;
+	font-size: 30px;
 }
 
 </style>

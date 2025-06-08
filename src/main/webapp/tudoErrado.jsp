@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
 <style>
 a {
 	border: 1px, solid;
@@ -11,12 +13,11 @@ a {
 }
 
 </style>
-<head>
 <meta charset="UTF-8">
 <title>Houve um erro</title>
 </head>
 <body>
-<h1>Operação não completa!!!</h1>
+<h2>Operação não completa!!!</h2>
 <a href="index.jsp">Voltar</a>
 </body>
 </html>
