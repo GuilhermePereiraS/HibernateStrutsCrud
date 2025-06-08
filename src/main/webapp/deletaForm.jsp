@@ -9,12 +9,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 	<body>
 		 <html:form action="/deleta">
-			 <label>Selecione um usuario para deletar</label>
+			 <label>Selecione um usuario para deletar</label><br>
 			 <html:select property="nome">
 			 	<html:options collection="listaUsuarios" property="nome" labelProperty="nome"></html:options>
 			 </html:select>

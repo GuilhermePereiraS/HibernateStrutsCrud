@@ -5,12 +5,15 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ page isELIgnored="false" %>
-
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+
+</style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Adicione um usuario</title>
 
 <style>
 label,input {

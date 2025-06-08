@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
 <style>
+
 a {
 	border: 1px, solid;
 	padding: 5px;
@@ -11,12 +14,11 @@ a {
 }
 
 </style>
-<head>
 <meta charset="UTF-8">
 <title>Deu tudo certo</title>
 </head>
 <body>
-<h1>Operação completa!!!</h1>
-<a href="consulta">Ver lista</a>
+<h2>Operação completa!!!</h2>
+<a href="consulta.do">Ver lista</a>
 </body>
 </html>
